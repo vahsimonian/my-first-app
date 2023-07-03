@@ -21,15 +21,15 @@ body {
   display: flex;
   flex-direction: column;
   color: white;
-  background-color: black;
+  background-color: transparent;
   text-decoration: none;
-  max-width: 70px;
   transition: all 0.2s ease-in;
-  border: 2px solid black;
+  border: 2px solid white;
 }
 
 .liked:hover {
-  border: 2px solid white;
+  color: rgb(21, 81, 2);
+  border: 2px solid rgb(21, 81, 2);
   border-radius: 5px;
 }
 
@@ -39,7 +39,7 @@ header {
   display: flex;
   justify-content: space-between;
   font-size: 1.2rem;
-  background-color: rgba(0, 0, 0, 0.9);
+  background: linear-gradient(to top, green, lightgreen) right;
   color: white;
   align-items: center;
   padding: 0 5px;
@@ -56,9 +56,9 @@ header {
 }
 
 .fa-solid:hover {
-  border: 2px solid black;
-  color: black;
-  background-color: white;
+  border: 2px solid rgb(21, 81, 2);
+  color: rgb(21, 81, 2);
+  /* background-color: transparent; */
 }
 
 .store-container {
@@ -66,7 +66,9 @@ header {
   align-items: center;
   /* border: 2px solid magenta; */
   max-width: 100vw;
-  background: rgb(106, 98, 98);
+  /* background: #51e2f5, #9df9ef, #edf756, #ffa8b6, #a28089; */
+  background: linear-gradient(to left, rgb(232, 225, 8), rgb(117, 25, 25)) right;
+  background-size: 200% 100%;
   background-size: cover;
   color: white;
   letter-spacing: 0.075rem;
@@ -182,6 +184,10 @@ header {
   flex-wrap: wrap;
   gap: 25px;
   max-width: 750px;
+  max-width: 500px;
+  background-color: rgba(234, 119, 211, 0.2);
+  padding: 25px;
+  border-radius: 25px;
 }
 
 .price-info {
@@ -207,11 +213,9 @@ header {
 
 .product-container {
   /* border: 2px solid magenta; */
-  /* position: relative; */
   border-radius: 15px;
-  max-width: 150px;
+  max-width: 140px;
   display: flex;
-  padding: 0;
   transition: all 0.2s ease-in;
 }
 
@@ -223,12 +227,14 @@ header {
 .image-container {
   /* border: 2px solid magenta; */
   padding-top: 5px;
+  padding: 7px;
   width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(35, 35, 35);
+  background: linear-gradient(to bottom, rgb(96, 142, 96), rgb(24, 129, 24))
+    right;
   border-radius: 5px;
   position: relative;
 }
@@ -304,7 +310,7 @@ img {
 
 .cart-item img {
   transition: all 0.25s ease-in;
-  margin: 0 0 0 -85px;
+  margin: 0 0 0 -75px;
 }
 
 .cart-item:hover > img {
@@ -363,27 +369,48 @@ h4 {
   margin: 15px 6px;
 }
 
-.total-amount {
-  /* border: 2px solid magenta; */
+/* .total-amount {
   display: flex;
   flex-direction: row;
-}
+} */
 
-.total-amount-btn {
+.add-minus-btn {
   padding: 2px 10px;
   background-color: transparent;
   color: white;
   font-weight: bold;
   font-size: 15px;
-  border: 2px solid black;
+  border: 2.5px solid black;
   border-radius: 5px;
   cursor: pointer;
   box-shadow: inset;
   transition: all 0.15s ease;
 }
 
-.total-amount-btn:active {
+.add-minus-btn:active {
   -webkit-box-shadow: inset 1px 1px 10px #333;
   -moz-box-shadow: inset 1px 1px 10px #333;
   box-shadow: inset 1px 1px 10px #333;
+}
+
+.buttons {
+  /* border: 2px solid mediumseagreen; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  width: 120px;
+}
+
+.buttons > h2 {
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif,
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: normal;
+  border-radius: 10px;
+  padding: 3px 7px;
+  color: white;
+  border: 3px solid black;
+  background-color: transparent;
 }

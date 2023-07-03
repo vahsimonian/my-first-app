@@ -28,6 +28,18 @@ function ContextProvider({ children }) {
     setCartInfo([newItem])
   }
 
+  function toggleItemCount(itemID, count) {
+    setCartItems((prev) => {
+      const itemsCopy = [...prev]
+      const index = itemsCopy.findIndex((el) => el.id === itemID)
+      itemsCopy[index].count = count
+
+      return itemsCopy
+    })
+  }
+
+  console.log(cartItems)
+
   return (
     <Context.Provider
       value={{
@@ -42,6 +54,7 @@ function ContextProvider({ children }) {
         removeFromCart,
         addToFavorites,
         removeFromFavorites,
+        toggleItemCount,
       }}
     >
       {children}

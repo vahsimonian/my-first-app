@@ -4,18 +4,26 @@ import { Context } from '../Context'
 
 function CartItem({ item }) {
   const [hovered, setHovered] = useState(false)
-  const [quantity, setQuantity] = useState(1)
-  const [itemPrice, setItemPrice] = useState(item.price)
-  const { removeFromCart, addCartInfo, cartItems } = useContext(Context)
+  const { removeFromCart, addCartInfo, addToCart, toggleItemCount } =
+    useContext(Context)
 
   const binIconHover = hovered ? 'fill' : 'line'
 
-  function plusButton() {}
+  const quantity = item.count || 1
+
+  function plusButton() {
+    toggleItemCount(item.id, quantity + 1)
+  }
+
+  // setQuantity((quantity) => quantity - 1)
+  // if (quantity <= 1) {
+  //   setTimeout(() => {
+  //     removeFromCart(item.id)
+  //   }, 500)
+  // }
 
   function minusButton() {
-    if (quantity < 2) {
-      // removeFromCart(item.id)
-    } else setQuantity(quantity - 1)
+    toggleItemCount(item.id, quantity - 1)
   }
 
   return (
@@ -30,16 +38,21 @@ function CartItem({ item }) {
         <img src={item.url} width='100px' onClick={() => addCartInfo(item)} />
       </Link>
       <div className='item-in-cart'>
-        <p className='item-price'>Price: ${itemPrice}</p>
-        <h5>Quantity: {quantity}</h5>
+        <p className='item-price'>Price: ${item.price * quantity}</p>
+        {/* <h5>Quantity: {quantity}</h5> */}
         <h3>{item.desc}</h3>
       </div>
-      <div>
-        <button className='total-amount-btn' onClick={plusButton}>
+      <div className='buttons'>
+        <button className='add-minus-btn' onClick={plusButton}>
           +
         </button>
-        &nbsp;
-        <button className='total-amount-btn' onClick={minusButton}>
+        {/* &nbsp; */}
+        <h2>{quantity}</h2>
+        <button
+          className='add-minus-btn'
+          disabled={quantity === 1}
+          onClick={minusButton}
+        >
           -
         </button>
       </div>

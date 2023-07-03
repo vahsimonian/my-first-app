@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../Context'
 import CartItem from '../components/CartItem'
 
@@ -6,13 +6,13 @@ function InCart() {
   const [buttonText, setButtotText] = useState('Place Order')
   const { cartItems, setCartItems } = useContext(Context)
 
-  const totalAmount = cartItems
+  const inCartElements = cartItems.map((item) => {
+    return <CartItem key={item.id} item={item} />
+  })
+
+  const amountTotal = cartItems
     .map((totalCost) => totalCost.price)
     .reduce((acc, tot) => acc + tot, 0)
-
-  const inCartElements = cartItems.map((item) => {
-    return <CartItem key={item.id} item={item} totalAmount={totalAmount} />
-  })
 
   function placeOrder() {
     setButtotText('Ordering...')
@@ -28,7 +28,7 @@ function InCart() {
       <br />
       {cartItems.length > 0 && (
         <div className='total-amount'>
-          <p className='item-price'>Total Amount: ${totalAmount}</p>
+          <p className='item-price'>Total Amount: ${amountTotal}</p>
         </div>
       )}
       {cartItems.length > 0 && (
