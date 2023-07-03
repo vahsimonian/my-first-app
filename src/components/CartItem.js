@@ -10,15 +10,7 @@ function CartItem({ item }) {
 
   const binIconHover = hovered ? 'fill' : 'line'
 
-  function plusButton() {
-    setQuantity(quantity + 1)
-    setItemPrice((itemPrice) => {
-      const itemQuantity = quantity.length
-      return {
-        itemPrice: itemPrice * itemQuantity,
-      }
-    })
-  }
+  function plusButton() {}
 
   function minusButton() {
     if (quantity < 2) {
